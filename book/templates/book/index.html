@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>เว็บไซต์ซื้อ-ขายหนังสือ มือสอง</h2>
+<hr>
+<div class="row">
+    <div class="col-lg-6 my-2">
+        <h4><i class="fas fa-shopping-cart"></i> รายการประกาศขาย</h4>
+        <!-- sell search -->
+        <form action="{% url 'index' %}" method="POST" class="px-2">
+            {% csrf_token %}
+            <div class="input-group my-2">
+                <input type="text" class="form-control" placeholder="กรอกชื่อหนังสือที่ต้องการค้นหา" id="sell_search" name="sell_search"
+                    value="{{sell_search}}">
+                <input type="hidden" name="buy_search" value="{{buy_search}}">
+                <div class="input-group-append">
+                    <button class="btn btn-orange" type="submit">ค้นหา</button>
+                </div>
+            </div>
+        </form>
+        <!-- sell list -->
+        <div class="px-2">
+            {% for sell in sell_list %}
+                <a href="{% url 'topic' topic_id=sell.id %}" class="d-block my-1 booklist"><i class="fas fa-book mr-1"></i> {{sell.text_book}}</a>
+            {% endfor %}
+        </div>
+        
+    </div>
+    <div class="col-lg-6 my-2">
+        <h4><i class="fas fa-shopping-basket"></i> รายการประกาศรับซื้อ</h4>
+        <!-- buy search -->
+        <form action="{% url 'index' %}" method="POST" class="px-2">
+            {% csrf_token %}
+            <div class="input-group my-2">
+                <input type="text" class="form-control" placeholder="กรอกชื่อหนังสือที่ต้องการค้นหา" id="buy_search" name="buy_search"
+                    value="{{buy_search}}">
+                <input type="hidden" name="sell_search" value="{{sell_search}}">
+                <div class="input-group-append">
+                    <button class="btn btn-orange" type="submit">ค้นหา</button>
+                </div>
+            </div>
+        </form>
+        <!-- buy list -->
+        <div class="px-2">
+            {% for buy in buy_list %}
+                <a href="{% url 'topic' topic_id=buy.id %}" class="d-block my-1 booklist"><i class="fas fa-book mr-1"></i> {{buy.text_book}}</a>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock content %}

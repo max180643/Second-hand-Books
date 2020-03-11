@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>เข้าสู่ระบบ</h1>
+<hr>
+<div class="row">
+    <div class="col-lg-6 col-md-8 col-10">
+        <form method="POST" action="{% url 'login' %}">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="username">ชื่อผู้ใช้:</label>
+                <input type="text" class="form-control ml-3" id="username" name="username" value="{{username}}">
+            </div>
+            <div class="form-group">
+                <label for="password">รหัสผ่าน:</label>
+                <input type="password" class="form-control ml-3" id="password" name="password">
+            </div>
+            <div class="form-group">
+                <input type="hidden" id="next_url" name="next_url" value="{{next_url}}">
+            </div>
+            {% if error %}
+            <p class="text-danger my-0">{{ error }}</p>
+            {% endif %}
+            <a class="text-secondary d-block my-2 link" href="{% url 'register' %}">สมัครสมาชิก? คลิกที่นี่!</a>
+            <button type=" submit" class="btn btn-orange ml-3">เข้าสู่ระบบ</button>
+        </form>
+    </div>
+</div>
+{% endblock content %}

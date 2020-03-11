@@ -1,0 +1,63 @@
+body {
+    font-family: 'Prompt', sans-serif;
+}
+
+.btn-orange {
+    color: white;
+    background-color: #f03700;
+}
+
+.btn-orange:hover {
+    color: white;
+    background-color: #e03400;
+}
+
+.link {
+    cursor: pointer;
+}
+
+.link:hover {
+    text-decoration: underline !important;
+}
+
+.booklist {
+    text-decoration: none;
+    color: black;
+    font-size: 1.1em;
+}
+
+.cover_page {
+    height: 50vh;
+}
+
+.badge_type {
+    font-size: 1em;
+}
+
+.badge-forestgreen {
+    color: white;
+    background-color: forestgreen;
+}
+
+.badge-crimson {
+    color: white;
+    background-color: crimson;
+}
+
+.text-black {
+    color: black;
+}
+
+.orange-border textarea {
+    border: 1px solid #f03700;
+}
+
+.orange-border .form-control:focus {
+    border: 1px solid #f03700;
+    box-shadow: 0 0 0 0.2rem rgba(240, 55, 0, 0.25);
+}
+
+.orange-comment {
+    border: 1px solid #f03700;
+    border-radius: .25rem;
+}
