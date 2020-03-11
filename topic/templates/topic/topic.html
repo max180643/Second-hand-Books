@@ -1,11 +1,16 @@
 {% extends "base.html" %}
+{% load static %}
 {% block content %}
 <h4 class="d-inline mr-1"><i class="fas fa-bullhorn"></i> {{ type_name }}: </h4><h2 class="d-inline">{{ post.text_book }}</h2>
 <hr>
 <div class="row">
     <div class="col-lg-4 col-12">
         <div class="text-center">
-            <img src="/{{ post.picture.url }}" alt="{{ post.text_book }}'s image" class="cover_page">
+            {% if post.picture %}
+                <img src="/{{ post.picture.url }}" alt="{{ post.text_book }}'s image" class="cover_page">
+            {% else %}
+                <img src="{% static 'image/notfound.jpg' %}" alt="{{ post.text_book }}'s image" class="cover_page">
+            {% endif %}
             {% if owner %}
                 <a href="{% url 'manage' %}" class="btn btn-warning mt-3">จัดการกระทู้</a>
             {% endif %}
